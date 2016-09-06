@@ -58,6 +58,7 @@ The application consists of two main job that should be submitted to the Spark c
 2) ic_scoring job (calculate Tf-IDF for subfields, parent fields, and instance level)
 
 There are two ways to submit our jobs to Spark master:
+
 1) Manually: by running the following command on the Spark master node command line:
 ```
 $./usr/local/spark/bin/spark-submit\
