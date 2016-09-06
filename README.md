@@ -10,9 +10,9 @@ $start-dfs.sh
 ```
 
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
- or later) package,  so that you do not have to build Spark first. Then use the following command to start both the master and the slave nodes:
+ or later) package,  so that you do not have to build Spark first. Then use the following command on the master node to start both the master and the slave nodes:
 ```
- #sbin/start-all.sh
+$sbin/start-all.sh
 ```
  (you can follow the instructions given on the following link:  http://blog.insightdatalabs.com/spark-cluster-step-by-step/)
  
