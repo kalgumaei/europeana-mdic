@@ -17,7 +17,7 @@ $sbin/start-all.sh
  (you can follow the instructions given on the following link:  http://blog.insightdatalabs.com/spark-cluster-step-by-step/)
  
 3) Install Elasticsearch.  (you can follow the instructions given on the following link: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04
-). You can configure Elasticsearch to start automatically with system booting, however, you can also start it manually by running the following code on each elasticseearch node:
+). You can configure Elasticsearch to start automatically with system booting, however, you can also start the service manually by running the following code on each elasticseearch node:
 ```
 $sudo service elasticsearch start
 ```
