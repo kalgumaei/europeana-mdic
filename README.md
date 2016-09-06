@@ -84,11 +84,11 @@ Data transform output example:
           "doc_source": "es-spark1",
           "doc_id": "09218/EUS_00A11C0279CF4EBA9D68ABEBE2885CB5",
           "dc:description": {
-            "dc:description_hungarian": "A beszélgetés témája: az elektronikus kereskedelem helye a magyar gazdaságban. Magyarországon no a bizalom az interneten keresztül történo vásárlás irányába. Három év alatt a kétszeresére növekedett az online vásárolt árucikkek értéke. Magyar szakértok beszélnek az e-kereskedelem térnyerésének okairól, elonyeirol, hátrányairól és a biztonság kérdéseirol.",
+            "dc:description_hungarian": "A beszÃ©lgetÃ©s tÃ©mÃ¡ja: az elektronikus kereskedelem helye a magyar gazdasÃ¡gban. MagyarorszÃ¡gon no a bizalom az interneten keresztÃ¼l tÃ¶rtÃ©no vÃ¡sÃ¡rlÃ¡s irÃ¡nyÃ¡ba. HÃ¡rom Ã©v alatt a kÃ©tszeresÃ©re nÃ¶vekedett az online vÃ¡sÃ¡rolt Ã¡rucikkek Ã©rtÃ©ke. Magyar szakÃ©rtok beszÃ©lnek az e-kereskedelem tÃ©rnyerÃ©sÃ©nek okairÃ³l, elonyeirol, hÃ¡trÃ¡nyairÃ³l Ã©s a biztonsÃ¡g kÃ©rdÃ©seirol.",
             "dc:description_english": "The topic of today's discussion: the role of electronic commerce in the Hungarian economy. Trust towards Internet shopping is growing in Hungary. In three years, the value of the goods purchased online has doubled. Hungarian experts of the online market discuss the expansion of e-commerce, the reasons behind it, the advantages and disadvantages of buying online, and the issue of shopping online safely."
           },
           "dcterms:alternative": {
-            "dcterms:alternative_hungarian": "Elektronikus kereskedelem Magyarországon"
+            "dcterms:alternative_hungarian": "Elektronikus kereskedelem MagyarorszÃ¡gon"
           },
           "dc:title": {
             "dc:title_english": "E-commerce in Hungary"
@@ -176,6 +176,7 @@ OK
 ## Built With
 * Python 3
 * PySpark
+
 ## Author
 
 * **Khaled Al-Gumaei**  - *Initial work* - 
