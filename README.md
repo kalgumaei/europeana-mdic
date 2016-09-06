@@ -3,7 +3,7 @@
 This framework is designed to measure the Information Content IC in the metadata instances in general. However, a part of this code is devoted for measuring IC in Europeana metadata.
 The framework is developed on top of Hadoop. It uses Apache Spark as Lightning-Fast cluster computing system and Elasticsearch as a distributed analysis and data store engine.
 
-### Prerequisites
+## Prerequisites
 1) Install Hadoop and start the HDFS daemon on all nodes. (You can follow the instructions given in the following link:  http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/). To start HDFS, use the following command on the NameNode:
 ```
 $start-dfs.sh
@@ -36,7 +36,7 @@ $./bin/kibana
 ```
 3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) to the jars folder in your Spark home.
 
-### Installing
+## Installing
 1) The code is written in Python 3, so you need Python 3.x to be installed. (For both Ubuntu and Debian, Python 3 will be installed by default)
 2) Download the application code to your home or src directory on your Spark master node.
 3) Upload Europeana metadata files from 'europeana' local folder to your HDFS by running the following command on your Hadoop NameNode:
@@ -159,7 +159,7 @@ Here is an example of ic_scoring output:
       }
 ```
 
-### Running the tests
+## Running the tests
 
 The unittest modules are located in the directory `test`, so to run the tests follow these steps:
 1) Upload the file 2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz to the HDFS storage using the following command:
@@ -182,14 +182,14 @@ Ran 29 tests in xx.xxxs
 
 OK
 ```
-## Built With
+### Built With
 * Python 3
 * PySpark
 
-## Author
+### Author
 
 * **Khaled Al-Gumaei**  - *Initial work* - 
 
-## License
+### License
 
 This project is licensed under the MDIC License - see the [LICENSE.md](LICENSE.md) file for details
