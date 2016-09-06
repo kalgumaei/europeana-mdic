@@ -82,7 +82,7 @@ on the master node command line and then follow the main menu options:
 ```
 Note: The jobs are dependant, so you should run the first two options in order 1 then 2.
 
-Data transform output example:
+Here is an example of transform_data output:
 ```
 {
         "_index": "europeana-55",
@@ -105,7 +105,7 @@ Data transform output example:
         }
       }
 ```
-IC scoring output of above instance:
+Here is an example of ic_scoring output:
 ```
 {
         "_index": "europeana-55-result",
