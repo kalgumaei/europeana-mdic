@@ -59,7 +59,7 @@ The application consists of two main job that should be submitted to the Spark c
 
 There are two ways to submit our jobs to Spark master:
 
-1) Manually: by running the following command on the Spark master node command line:
+1) **Manually:** by running the following command on the Spark master node command line:
 ```
 $./usr/local/spark/bin/spark-submit\
                               --master spark://es-spark2:7077\
@@ -68,7 +68,7 @@ $./usr/local/spark/bin/spark-submit\
                               --executor-memory 2g\
                                data_transform.py
 ```    
-2) Through main menu options: to run the application frequently and interact with indices options, we have written the code in the file `submit_menu.py` as an end point entry for submitting the jobs easily and dealing with the indices (overwrite, append, add replicas, and so on). This can be done easily by running the command:
+2) **Through main menu options:** to run the application frequently and interact with indices options, we have written the code in the file `submit_menu.py` as an end point entry for submitting the jobs easily and dealing with the indices (overwrite, append, add replicas, and so on). This can be done easily by running the command:
 ```
 $python3 submit_menu.py
 ```
