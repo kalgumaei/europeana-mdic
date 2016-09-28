@@ -12,7 +12,7 @@ $ start-dfs.sh
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
  or later) package,  so that you do not have to build Spark first. Then use the following command on the master node to start both the master and the slave nodes:
 ```
-$sbin/start-all.sh
+$ sbin/start-all.sh
 ```
  (you can follow the instructions given on the following link:  http://blog.insightdatalabs.com/spark-cluster-step-by-step/)
  
@@ -41,7 +41,7 @@ $ ./bin/kibana
 2) Download the application code to your home or src directory on your Spark master node.
 3) Upload Europeana metadata files from 'europeana' local folder to your HDFS by running the following command on your Hadoop NameNode:
 ```
-$hdfs dfs -copyFromLocal europeana/*.gz  /spark/europeana/
+$ hdfs dfs -copyFromLocal europeana/*.gz  /spark/europeana/
 ```
 Note: I have downloaded the full Europeana metadata collection as zipped JSON files from the Metadata Quality Assurance Framework website under the following link: http://141.5.103.129/europeana-qa/download.html
 
@@ -94,7 +94,8 @@ Here is an example of data_transform output:
           "doc_source": "es-spark1",
           "doc_id": "09218/EUS_00A11C0279CF4EBA9D68ABEBE2885CB5",
           "dc:description": {
-            "dc:description_hungarian": "A beszélgetés témája: az elektronikus kereskedelem helye a magyar gazdaságban.
+            "dc:description_hungarian": "A beszélgetés témája:
+            az elektronikus kereskedelem helye a magyar gazdaságban.
             Magyarországon no a bizalom az interneten keresztül történo vásárlás irányába.
             Három év alatt a kétszeresére növekedett az online vásárolt árucikkek értéke.
             Magyar szakértok beszélnek az e-kereskedelem térnyerésének okairól, elonyeirol,
@@ -104,7 +105,8 @@ Here is an example of data_transform output:
             Trust towards Internet shopping is growing in Hungary.
             In three years, the value of the goods purchased online has doubled.
             Hungarian experts of the online market discuss the expansion of e-commerce,
-            the reasons behind it, the advantages and disadvantages of buying online, and the issue of shopping online safely."
+            the reasons behind it, the advantages and disadvantages of buying online,
+            and the issue of shopping online safely."
           },
           "dcterms:alternative": {
             "dcterms:alternative_hungarian": "Elektronikus kereskedelem Magyarországon"
@@ -175,7 +177,8 @@ The unittest modules are located in the directory `test`, so to run the tests fo
     
 1) Upload the file 2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz to the HDFS storage using the following command:
 ```
-$hdfs dfs -copyFromLocal europeana/2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz  /spark/europeana/test/test_json_data.gz
+$ hdfs dfs -copyFromLocal europeana/2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz\
+                                                     /spark/europeana/test/test_json_data.gz
 ```
 Note: We used this file for the test purpose because it contains only 3 records.
 
