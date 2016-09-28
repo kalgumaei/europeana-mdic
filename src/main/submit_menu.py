@@ -37,7 +37,7 @@ def submit_job(job_file, job_name):
     submit_command ="".join(["bash /usr/local/spark/bin/spark-submit\
                               --master spark://", sp_master, " \
                               --name '", job_name, "' \
-                              --executor-memory 2g " , job_file])
+                              --executor-memory 2500m " , job_file])
     args = shlex.split(submit_command)
     p = subprocess.call(args)
     if not p:
@@ -71,7 +71,7 @@ def main():
     my_options = [
         "1- Transformation and indexing documents",
         "2- Calculating document IC scores",
-        "3- Adding original index replicas",
+        "3- Adding origin index replicas",
         "4- Adding result index replicas",
         "5- Exit"]
     ans = True

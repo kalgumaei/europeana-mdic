@@ -116,14 +116,15 @@ def score_subfield(
         doc["_source"]["doc_id"],
         doc["_source"]["doc_source"])
     field_tfidf[child] = {}
-    if tv["term_vectors"]:
-        tfidf, no_of_terms = calculate_tfidf(tv, get_full_name(parent, child))
+    if "term_vectors" in tv:
+        if tv["term_vectors"]:
+            tfidf, no_of_terms = calculate_tfidf(tv, get_full_name(parent, child))
     field_tfidf[child]["tfidf_score"] = tfidf
     field_tfidf[child]["terms_count"] = no_of_terms
     if no_of_terms:
         field_tfidf[child]["info_density"] = tfidf / no_of_terms
     else:
-        field_tfidf[child]["info_density"] = 0
+        field_tfidf[child]["info_density"] = 0.0
     child_tfidf_list.append(tfidf)
     info_density_list.append(field_tfidf[child]["info_density"])
     return field_tfidf, child_tfidf_list, info_density_list
@@ -180,8 +181,12 @@ def score_instance(doc):
     return prepared_doc
 
 def get_index_name():
-    """Return the original index name."""
+    """Return the origin index name."""
     return(INDEX_NAME)
+
+def get_type_name():
+    """Return the origin type name."""
+    return(TYPE_NAME)
 
 
 def scoring(es_doc):
@@ -189,7 +194,7 @@ def scoring(es_doc):
     doc = {"_source": es_doc[1],
            "_id": es_doc[0],
            "_index": get_index_name(),
-           "_type": TYPE_NAME
+           "_type": get_type_name()
            }
     result = score_instance(doc)
     

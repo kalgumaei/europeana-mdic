@@ -14,6 +14,8 @@ import socket
 from pyspark import SparkContext
 import elasticsearch
 from elasticsearch import helpers
+from langdetect import detect
+from langdetect import DetectorFactory
 
 import conf
 import index_settings
@@ -26,9 +28,10 @@ DEFAULT_LANGUAGE = conf.default_language
 DATA_PATH = conf.data_path
 INDEX_NAME = conf.index_name
 TYPE_NAME = conf.type_name
-invalid_lang_flag = False
 no_lang_flag = False
+
 es = elasticsearch.Elasticsearch(hosts=ES_HOSTS.split(","), timeout=500)
+DetectorFactory.seed = 0
 
 def get_target_proxy(line_data):
     """Return the relative section of a metadata instnace."""
@@ -69,43 +72,7 @@ def map_language(lan):
         return lan
     else:
         return DEFAULT_LANGUAGE
-
-
-def find_language_in_proxy(proxy, doc, source):
-    """Return the language at the level of the arget proxy."""
-    lang = ""
-    try:
-        if len(proxy["dc:language"]) > 1:
-            print(
-                " 'dc:language' contains many elements {l}. \
-                   source[{s}] document[{d}]".format(
-                       l=proxy["dc:language"],
-                       d=doc['identifier'],
-                       s=source))
-        if proxy["dc:language"][0]:
-            if isinstance(proxy["dc:language"][0], dict):
-                if "@lang" in proxy["dc:language"][0]:
-                    lang = proxy["dc:language"][0]["@lang"]
-                else:
-                    print(
-                        "Invalid nested fields in'dc:language' structure.\
-                          source[{s}] document[{d}]".format(
-                              d=doc["identifier"], s=source))
-            elif isinstance(proxy["dc:language"][0], str):
-                lang = proxy["dc:language"][0]
-            else:
-                print(
-                    "Invalid 'dc:language' structure.\
-                       source[{s}] document[{d}]".format(
-                           d=doc['identifier'], s=source))
-    except KeyError:
-        lang = ""
-    except IndexError:
-        lang = ""
-    if lang == "mul":
-        lang = ""
-    return lang
-
+    
 
 def find_language_out_proxy(doc):
     """Return the language at the higher level 'EuropeanaAggregation'."""
@@ -175,18 +142,17 @@ def add_nested_field_to_es(nested_field, text, es_doc):
 def process_sub_field(element, back_language):
     """Return the element after setting the language."""
     global no_lang_flag
-    global invalid_lang_flag
 
     if not element[1]:  # the element has no language
         if back_language:
             element[1] = back_language
         else:
             no_lang_flag = True
-    if validate_lang_name(element[1]):
-        final_lang = map_language(element[1].lower())
-    else:
-        invalid_lang_flag = True
-        final_lang = DEFAULT_LANGUAGE
+            try:
+                element[1] = detect(element[0])
+            except Exception:
+                element[1] = ""
+    final_lang = map_language(element[1].lower())
     return element[0], final_lang
 
 
@@ -206,7 +172,6 @@ def process_line(line_data, source):
     proxy = get_target_proxy(line_data)
     back_language = find_language_out_proxy(line_data)
     no_lang_flag = False
-    invalid_lang_flag = False
     es_doc = {
         "doc_id": str(
             line_data["identifier"]),
@@ -222,10 +187,6 @@ def process_line(line_data, source):
     if no_lang_flag:
         print(
             "No language is assigned. source[{s}] document[{d}]".format(
-                d=line_data["identifier"], s=source))
-    if invalid_lang_flag:
-        print(
-            " Invalid language code. source[{s}] document[{d}] ".format(
                 d=line_data["identifier"], s=source))
     return(es_doc)
 

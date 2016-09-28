@@ -6,7 +6,7 @@ The framework is developed on top of Hadoop. It uses Apache Spark as Lightning-F
 ## Prerequisites
 1) Install Hadoop and start the HDFS daemon on all nodes. (You can follow the instructions given in the following link:  http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/). To start HDFS, use the following command on the NameNode:
 ```
-$start-dfs.sh
+$ start-dfs.sh
 ```
 
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
@@ -19,20 +19,20 @@ $sbin/start-all.sh
 3) Install Elasticsearch.  (you can follow the instructions given on the following link: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04
 ). You can configure Elasticsearch to start automatically with system booting, however, you can also start the service manually by running the following code on each elasticseearch node:
 ```
-$sudo service elasticsearch start
+$ sudo service elasticsearch start
 ```
  or restart it using:
 ```
-$sudo service elasticsearch start
+$ sudo service elasticsearch start
 ```
 * To easily explore & visualize Elasticsearch indices, you can install Kibana by following this link:  https://www.elastic.co/guide/en/kibana/current/setup.html
 * You can also install Sense console for interacting with the REST API of Elasticsearch. It's a Kibana app and can be installed by running the following command from the Kibana folder:
 ```
-$./bin/kibana plugin --install elastic/sense
+$ ./bin/kibana plugin --install elastic/sense
 ```
 * In order to use Kibana UI and Sense console, you need to start Kibana using the following command:
 ```
-$./bin/kibana
+$ ./bin/kibana
 ```
 3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) to the jars folder in your Spark home.
 
@@ -61,7 +61,7 @@ There are two ways to submit our jobs to Spark master:
 
 1) **Manually:** by running the following command on the Spark master node command line:
 ```
-$./usr/local/spark/bin/spark-submit\
+$ ./usr/local/spark/bin/spark-submit\
                               --master spark://es-spark2:7077\
                               --name 'Transform data job'\
                               --jars /usr/local/spark/jars/elasticsearch-hadoop-2.3.2.jar\
@@ -70,7 +70,7 @@ $./usr/local/spark/bin/spark-submit\
 ```    
 2) **Through main menu options:** to run the application frequently and interact with indices options, we have written the code in the file `submit_menu.py` as an end point entry for submitting the jobs easily and dealing with the indices (overwrite, append, add replicas, and so on). This can be done easily by running the command:
 ```
-$python3 submit_menu.py
+$ python3 submit_menu.py
 ```
 on the master node command line and then follow the main menu options:
 ```
@@ -83,7 +83,7 @@ on the master node command line and then follow the main menu options:
 ```
 Note: The jobs are dependant, so you should run the first two options in order 1 then 2.
 
-Here is an example of transform_data output:
+Here is an example of data_transform output:
 ```
 {
         "_index": "europeana-55",
@@ -94,8 +94,17 @@ Here is an example of transform_data output:
           "doc_source": "es-spark1",
           "doc_id": "09218/EUS_00A11C0279CF4EBA9D68ABEBE2885CB5",
           "dc:description": {
-            "dc:description_hungarian": "A beszélgetés témája: az elektronikus kereskedelem helye a magyar gazdaságban. Magyarországon no a bizalom az interneten keresztül történo vásárlás irányába. Három év alatt a kétszeresére növekedett az online vásárolt árucikkek értéke. Magyar szakértok beszélnek az e-kereskedelem térnyerésének okairól, elonyeirol, hátrányairól és a biztonság kérdéseirol.",
-            "dc:description_english": "The topic of today's discussion: the role of electronic commerce in the Hungarian economy. Trust towards Internet shopping is growing in Hungary. In three years, the value of the goods purchased online has doubled. Hungarian experts of the online market discuss the expansion of e-commerce, the reasons behind it, the advantages and disadvantages of buying online, and the issue of shopping online safely."
+            "dc:description_hungarian": "A beszélgetés témája: az elektronikus kereskedelem helye a magyar gazdaságban.
+            Magyarországon no a bizalom az interneten keresztül történo vásárlás irányába.
+            Három év alatt a kétszeresére növekedett az online vásárolt árucikkek értéke.
+            Magyar szakértok beszélnek az e-kereskedelem térnyerésének okairól, elonyeirol,
+            hátrányairól és a biztonság kérdéseirol.",
+            "dc:description_english": "The topic of today's discussion:
+            the role of electronic commerce in the Hungarian economy.
+            Trust towards Internet shopping is growing in Hungary.
+            In three years, the value of the goods purchased online has doubled.
+            Hungarian experts of the online market discuss the expansion of e-commerce,
+            the reasons behind it, the advantages and disadvantages of buying online, and the issue of shopping online safely."
           },
           "dcterms:alternative": {
             "dcterms:alternative_hungarian": "Elektronikus kereskedelem Magyarországon"
@@ -163,19 +172,22 @@ Here is an example of ic_scoring output:
 ## Running the tests
 
 The unittest modules are located in the directory `test`, so to run the tests follow these steps:
+    
 1) Upload the file 2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz to the HDFS storage using the following command:
 ```
 $hdfs dfs -copyFromLocal europeana/2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz  /spark/europeana/test/test_json_data.gz
 ```
 Note: We used this file for the test purpose because it contains only 3 records.
+
 2) Assign the test file path to the parameter `test_data_path` in the conf.py file, for example:
 ```
 test_data_path = "hdfs://NameNode:9000/spark/europeana/test/test_json_data.gz"
 ```
+
 3) Run the following command on Spark master command to discover all unittest files and run them:
 
 ```
-$python3 -m unittest discover -s  path_to/src/test/ -p 'test_*.py'
+$ python3 -m unittest discover -s  path_to/src/test/ -p 'test_*.py'
 ```
 You should see the following text at the end of the test result:
 ```
