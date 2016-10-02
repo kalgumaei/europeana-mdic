@@ -32,7 +32,7 @@ def show_menu(options):
     return answer
 
 
-def submit_job(job_file, job_name):
+def submit_job(job_file, job_name, index_name, type_name):
     """Submit a job to Spark master."""
     submit_command ="".join(["bash /usr/local/spark/bin/spark-submit\
                               --master spark://", sp_master, " \
@@ -41,7 +41,7 @@ def submit_job(job_file, job_name):
     args = shlex.split(submit_command)
     p = subprocess.call(args)
     if not p:
-        print(ic_scoring.docs_count(INDEX_NAME,TYPE_NAME),'documents are indexed')
+        print(ic_scoring.docs_count(index_name, type_name),'documents are indexed')
 
     
 def transform_and_indexing_job_submit():
@@ -51,7 +51,7 @@ def transform_and_indexing_job_submit():
             TYPE_NAME,
             INDEX_SETTINGS,
             INDEX_MAPPING):
-        submit_job("data_transform.py", "Transform and indexing job")
+        submit_job("data_transform.py", "Transform and indexing job",INDEX_NAME, TYPE_NAME)
     input("Press anykey to show the menu again!")
 
 
@@ -62,7 +62,7 @@ def ic_scoring_job_submit():
             IC_TYPE_NAME,
             IC_INDEX_SETTINGS,
             IC_INDEX_MAPPING):
-        submit_job("ic_scoring.py", "IC scoring job")
+        submit_job("ic_scoring.py", "IC scoring job", IC_INDEX_NAME, IC_TYPE_NAME)
     input("Press anykey to show the menu again!")
 
                 
