@@ -178,7 +178,7 @@ Here is an example of _IC scoring_ result:
       }
 ```
 where:  
-``doc_id``: instance ID given by Europeana, not the system identifier of Elasticsearch
+``doc_id``: instance ID given by Europeana, not the system identifier of Elasticsearch  
 ``doc_ic_score``: IC score of a given metadata instance. The value represents the logarithm of the fields' IC scores summation.  
 ``doc_info_density_score``: information density score of a given metadata instance, which represent the logarithm of the fields' information density scores summation.
 
