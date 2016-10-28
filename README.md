@@ -6,16 +6,16 @@ The framework is developed on top of Hadoop. It uses Hadoop HDFS as a distribute
 ## Prerequisites
 1) Install Hadoop, prepare Hadoop_data folder on all nodes, and start the HDFS daemon on all nodes. (You can follow the instructions given [here](http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/) to install and prepare the Hadoop cluster).  
 To start HDFS, use the following command on the NameNode:
-```
+`
 $ start-dfs.sh
-```
+`
 
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
  or later) package,  so that you do not have to build Spark first. (you can follow the instructions given on the following link: [install Spark on a cluster](http://blog.insightdatalabs.com/spark-cluster-step-by-step/).  
  Then use the following command on the master node to start both the master and slave nodes:
-```
+``
 $ sbin/start-all.sh
-```
+``
  
 3) Install Elasticsearch. (you can follow the instructions given [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04).  
 You can configure Elasticsearch to start automatically with system booting. However, you can also start the service manually by running the following code on each elasticseearch node:
