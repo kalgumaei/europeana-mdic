@@ -181,9 +181,10 @@ For each target field, there are several values that describe the information co
 `sub_tfidf`: Includes the result details of the subfields, for example, dc:title_english , dc:title_german, and so on.
 
 For each subfield, there are three values:  
-`terms_count`: The length of the subfield after the analysis (e.g. after removing the stop words).
-`tfidf_score`: The information content score of the subfield.
-`info_density`: The information density score of the subfield calculated by dividing the tfidf_score by terms_count.
+`terms_count`: The length of the subfield after the analysis (e.g. after removing the stop words).  
+`tfidf_score`: The information content score of the subfield.  
+`info_density`: The information density score of the subfield calculated by dividing the tfidf_score by terms_count.  
+
 ## Running the tests
 
 The unittest modules are located in the directory `test`, so to run the tests follow these steps:
