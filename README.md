@@ -1,7 +1,7 @@
 # Measurement Information Content in Europeana Metadata Instances
 
-This framework is designed to measure the Information Content IC in the metadata instances in general. However, a part of this code is devoted for measuring IC in Europeana metadata.
-The framework is developed on top of Hadoop. It uses Apache Spark as Lightning-Fast cluster computing system and Elasticsearch as a distributed analysis and data store engine.
+This framework is designed to measure the Information Content (IC) in the metadata instances in general. However, a part of this code is devoted for measuring the IC in Europeana metadata.
+The framework is developed on top of Hadoop. It uses Hadoop HDFS as a distributed storage, Apache Spark as Lightning-Fast cluster computing system, and Elasticsearch as a distributed analysis and data store engine.
 
 ## Prerequisites
 1) Install Hadoop and start the HDFS daemon on all nodes. (You can follow the instructions given in the following link:  http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/). To start HDFS, use the following command on the NameNode:
@@ -170,7 +170,18 @@ Here is an example of ic_scoring output:
         }
       }
 ```
-
+where:
+doc_id: The instance identifier given by Europeana, not the system identifier of Elasticsearch.
+doc_ic_score: The information content score of a given metadata instance. The value represents the logarithm of the fields' IC scores summation.
+doc_info_density_score: The information density score of a given metadata instance, which represent the logarithm of the fields' information density scores summation.
+For each target field, there are several values that describe the information content results on the field level as well as on the subfield level such as:
+field_ic_score: The information content score of the field.
+field_info_density_score: The information density score of the field.
+sub_tfidf: Includes the result details of the subfields, for example, dc:title_english , dc:title_german, and so on.
+For each subfield, there are three values:
+terms_count: The length of the subfield after the analysis (e.g. after removing the stop words).
+tfidf_score: The information content score of the subfield.
+info_density: The information density score of the subfield calculated by dividing the tfidf_score by terms_count
 ## Running the tests
 
 The unittest modules are located in the directory `test`, so to run the tests follow these steps:
