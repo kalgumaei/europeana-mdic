@@ -39,13 +39,13 @@ $ ./bin/kibana
 3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) from [here](http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/) to the jars folder in your Spark home.
 
 ## Installing
-1) The code is written in Python 3, so you need Python 3.x to be installed. (For both Ubuntu and Debian, Python 3 will be installed by default)
-2) Download the application code to your home or src directory on your Spark master node.
-3) Upload Europeana metadata files from 'europeana' local folder to your HDFS by running the following command on your Hadoop NameNode:
+1) This framework is written in Python 3, so you need Python 3.x to be installed on each node. (For both Ubuntu and Debian, Python 3 will be installed by default)  
+2) Download the application code to your home or src directory on your Spark master node.  
+3) Upload the Europeana metadata files from the 'europeana' local folder to your HDFS by running the following HDFS command on your Hadoop NameNode:
 ```
 $ hdfs dfs -copyFromLocal europeana/*.gz  /spark/europeana/
 ```
-Note: We have downloaded the full Europeana metadata collection as zipped JSON files from the Metadata Quality Assurance Framework website under the following link: http://141.5.103.129/europeana-qa/download.html
+Note: We have downloaded the full Europeana metadata collection as zipped JSON files from the [Metadata Quality Assurance Framework website](http://141.5.103.129/europeana-qa/download.html).
 
 4) Edit the configuration file /src/main/conf.py to assign the appropriate parameter values based on your previous installation. For example:
 ```
@@ -55,9 +55,9 @@ es_hosts = "10.10.1.5,10.10.1.4,10.10.1.2"
 spark_master = "es-spark2:7077"
 ```
 ## Running the application
-The application consists of two main job that should be submitted to the Spark cluster in order:
-1) data_transform job (transform metadata recoreds to elasticsearch analyzable documents)
-2) ic_scoring job (calculate Tf-IDF for subfields, parent fields, and instance level)
+The application consists of two main job that should be submitted to the Spark cluster in order:  
+1) _data transformation_ job (transforms metadata recoreds to elasticsearch analyzable documents)  
+2) _IC scoring_ job (calculates Tf-IDF for subfields, parent fields, and instance)  
 
 There are two ways to submit our jobs to Spark master:
 
@@ -70,20 +70,20 @@ $ ./usr/local/spark/bin/spark-submit\
                               --executor-memory 2g\
                                data_transform.py
 ```    
-2) **Through main menu options:** to run the application frequently and interact with indices options, we have written the code in the file `submit_menu.py` as an end point entry for submitting the jobs easily and dealing with the indices (overwrite, append, add replicas, and so on). This can be done easily by running the command:
+2) **Through main menu options:** to run the application frequently and interact with indices options, we have written the code in the file `submit_menu.py` as an end point entry for submitting the jobs easily and dealing with indices (overwrite, append, add replicas, and so on). This can be done easily by running the command on the master node command line:
 ```
 $ python3 submit_menu.py
 ```
-on the master node command line and then follow the main menu options:
+The following main menu options will appear:
 ```
-                      1- Indexing documents
-                      2- Calculating document IC scores
-                      3- Adding original index replicas
-                      4- Adding result index replicas
-                      5- Exit
+                      1- Index metadata instances
+                      2- Calculate IC scores
+                      3- Add replicas (orginal index)
+                      4- Add replicas (results index)
+                      5- Exit application
 
 ```
-Note: The jobs are dependant, so you should run the first two options in order 1 then 2.
+Note: The first two options are dependant, so you should run the _data transformation_ job (option 1) and then the _IC scoring_ job (option2) in order.
 
 Here is an example of data_transform output:
 ```
