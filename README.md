@@ -55,7 +55,7 @@ es_hosts = "10.10.1.5,10.10.1.4,10.10.1.2"
 spark_master = "es-spark2:7077"
 ```
 ## Running the application
-The application consists of two main job that should be submitted to the Spark cluster in order:  
+The application consists of two main job that should be submitted to the Spark cluster:  
 1) _data transformation_ job (transforms metadata recoreds to elasticsearch analyzable documents)  
 2) _IC scoring_ job (calculates Tf-IDF for subfields, parent fields, and instance)  
 
@@ -85,7 +85,7 @@ The following main menu options will appear:
 ```
 Note: The first two options are dependant, so you should run the _data transformation_ job (option 1) and then the _IC scoring_ job (option2) in order.
 
-Here is an example of data_transform output:
+Here is an example of _data transformation_ output:
 ```
 {
         "_index": "europeana-55",
@@ -119,7 +119,7 @@ Here is an example of data_transform output:
         }
       }
 ```
-Here is an example of ic_scoring output:
+Here is an example of _IC scoring_ result:
 ```
 {
         "_index": "europeana-55-result",
@@ -191,7 +191,7 @@ For each subfield, there are three values:
 
 The unittest modules are located in the directory `test`, so to run the tests follow these steps:
     
-1) Upload the file 2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz to the HDFS storage using the following command:
+1) Upload the Europeana file 2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz to the HDFS storage using the following command:
 ```
 $ hdfs dfs -copyFromLocal europeana/2021108_Ag_CZ_CroatianCulturalHeritage_Zvucni11.json.gz\
                                                      /spark/europeana/test/test_json_data.gz
@@ -208,7 +208,7 @@ test_data_path = "hdfs://NameNode:9000/spark/europeana/test/test_json_data.gz"
 ```
 $ python3 -m unittest discover -s  path_to/src/test/ -p 'test_*.py'
 ```
-You should see the following text at the end of the test result:
+You should see the following text as a result of the unit testing:
 ```
 Ran 29 tests in xx.xxxs
 
