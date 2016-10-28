@@ -13,9 +13,9 @@ $ start-dfs.sh
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
  or later) package,  so that you do not have to build Spark first. (you can follow the instructions given on the following link: [install Spark on a cluster](http://blog.insightdatalabs.com/spark-cluster-step-by-step/).  
  Then use the following command on the master node to start both the master and slave nodes:
-``
+```
 $ sbin/start-all.sh
-``
+```
  
 3) Install Elasticsearch. (you can follow the instructions given [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04).  
 You can configure Elasticsearch to start automatically with system booting. However, you can also start the service manually by running the following code on each elasticseearch node:
