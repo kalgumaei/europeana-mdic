@@ -18,7 +18,7 @@ $ sbin/start-all.sh
 ```
  
  
-3) Install Elasticsearch. (you can follow the instructions given [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04).
+3) Install Elasticsearch. (you can follow the instructions given [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04).  
 You can configure Elasticsearch to start automatically with system booting. However, you can also start the service manually by running the following code on each elasticseearch node:
 ```
 $ sudo service elasticsearch start
@@ -27,7 +27,7 @@ $ sudo service elasticsearch start
 ```
 $ sudo service elasticsearch start
 ```
-* To easily explore & visualize Elasticsearch indices, you can install Kibana by following the instructions on this link:  https://www.elastic.co/guide/en/kibana/current/setup.html
+* To easily explore & visualize Elasticsearch indices, you can install Kibana by following the instructions given [here]( https://www.elastic.co/guide/en/kibana/current/setup.html).
 * You can also install Sense console for interacting with the REST API of Elasticsearch. It's a Kibana app and can be installed by running the following command from the Kibana folder:
 ```
 $ ./bin/kibana plugin --install elastic/sense
