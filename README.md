@@ -171,10 +171,15 @@ Here is an example of ic_scoring output:
       }
 ```
 where:
+
 ``doc_id``: The instance identifier given by Europeana, not the system identifier of Elasticsearch.
+
 ``doc_ic_score``: The information content score of a given metadata instance. The value represents the logarithm of the fields' IC scores summation.
+
 ``doc_info_density_score``: The information density score of a given metadata instance, which represent the logarithm of the fields' information density scores summation.
+
 For each target field, there are several values that describe the information content results on the field level as well as on the subfield level such as:
+
 `field_ic_score`: The information content score of the field.
 `field_info_density_score`: The information density score of the field.
 `sub_tfidf`: Includes the result details of the subfields, for example, dc:title_english , dc:title_german, and so on.
