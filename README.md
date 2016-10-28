@@ -6,9 +6,9 @@ The framework is developed on top of Hadoop. It uses Hadoop HDFS as a distribute
 ## Prerequisites
 1) Install Hadoop, prepare Hadoop_data folder on all nodes, and start the HDFS daemon on all nodes. (You can follow the instructions given [here](http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/) to install and prepare the Hadoop cluster).  
 To start HDFS, use the following command on the NameNode:
-`
+```
 $ start-dfs.sh
-`
+```
 
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
  or later) package,  so that you do not have to build Spark first. (you can follow the instructions given on the following link: [install Spark on a cluster](http://blog.insightdatalabs.com/spark-cluster-step-by-step/).  
