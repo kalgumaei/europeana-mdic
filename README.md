@@ -118,6 +118,12 @@ Here is an example of _data transformation_ output:
         }
       }
 ```
+where the related fields are inside the section ``_source`` as follows:  
+``doc_id``: instance ID.
+``doc_source``: source where the instnace came from (e.g. file, server, provider, or whatever)
+``dc:description``: an example of a parent field, the same like dc:title and dcterms:alternative
+``dc:description_hungarian``: an example of a subfield (field in specific language)
+
 Here is an example of _IC scoring_ result:
 ```
 {
@@ -172,19 +178,19 @@ Here is an example of _IC scoring_ result:
       }
 ```
 where:  
-``doc_id``: The instance identifier given by Europeana, not the system identifier of Elasticsearch.  
-``doc_ic_score``: The information content score of a given metadata instance. The value represents the logarithm of the fields' IC scores summation.  
-``doc_info_density_score``: The information density score of a given metadata instance, which represent the logarithm of the fields' information density scores summation.
+``doc_id``: instance ID given by Europeana, not the system identifier of Elasticsearch.
+``doc_ic_score``: IC score of a given metadata instance. The value represents the logarithm of the fields' IC scores summation.  
+``doc_info_density_score``: information density score of a given metadata instance, which represent the logarithm of the fields' information density scores summation.
 
 For each target field, there are several values that describe the information content results on the field level as well as on the subfield level such as:  
-`field_ic_score`: The information content score of the field.  
-`field_info_density_score`: The information density score of the field.  
-`sub_tfidf`: Includes the result details of the subfields, for example, dc:title_english , dc:title_german, and so on.
+`field_ic_score`: information content score of the field.  
+`field_info_density_score`: information density score of the field.  
+`sub_tfidf`: result details of the subfields, for example, dc:title_english , dc:title_german, and so on.
 
 For each subfield, there are three values:  
-`terms_count`: The length of the subfield after the analysis (e.g. after removing the stop words).  
-`tfidf_score`: The information content score of the subfield.  
-`info_density`: The information density score of the subfield calculated by dividing the tfidf_score by terms_count.  
+`terms_count`: length of the subfield after the analysis (e.g. after removing the stop words).  
+`tfidf_score`: IC score of the subfield.  
+`info_density`: information density score of the subfield calculated by dividing the tfidf_score by terms_count.  
 
 ## Run tests
 
