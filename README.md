@@ -37,7 +37,7 @@ $ ./bin/kibana
 ```
 3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) from [here](http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/) to the jars folder in your Spark home.
 
-## Installing
+## Installation
 1) This framework is written in Python 3, so you need Python 3.x to be installed on each node. (For both Ubuntu and Debian, Python 3 will be installed by default)  
 2) Download the application code to your home or src directory on your Spark master node.  
 3) Upload the Europeana metadata files from the 'europeana' local folder to your HDFS by running the following HDFS command on your Hadoop NameNode:
@@ -53,7 +53,7 @@ target_fields = ["title", "description"]
 es_hosts = "10.10.1.5,10.10.1.4,10.10.1.2"
 spark_master = "es-spark2:7077"
 ```
-## Running the application
+## Run application
 The application consists of two main job that should be submitted to the Spark cluster:  
 1) _data transformation_ job (transforms metadata recoreds to elasticsearch analyzable documents)  
 2) _IC scoring_ job (calculates Tf-IDF for subfields, parent fields, and instance)  
@@ -186,7 +186,7 @@ For each subfield, there are three values:
 `tfidf_score`: The information content score of the subfield.  
 `info_density`: The information density score of the subfield calculated by dividing the tfidf_score by terms_count.  
 
-## Running the tests
+## Run tests
 
 The unittest modules are located in the directory `test`, so to run the tests follow these steps:
     
