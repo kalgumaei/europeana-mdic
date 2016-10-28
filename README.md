@@ -17,7 +17,6 @@ $ start-dfs.sh
 $ sbin/start-all.sh
 ```
  
- 
 3) Install Elasticsearch. (you can follow the instructions given [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04).  
 You can configure Elasticsearch to start automatically with system booting. However, you can also start the service manually by running the following code on each elasticseearch node:
 ```
