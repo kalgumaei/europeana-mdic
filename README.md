@@ -4,20 +4,23 @@ This framework is designed to measure the Information Content (IC) in the metada
 The framework is developed on top of Hadoop. It uses Hadoop HDFS as a distributed storage, Apache Spark as Lightning-Fast cluster computing system, and Elasticsearch as a distributed analysis and data store engine.
 
 ## Prerequisites
-1) Install Hadoop and start the HDFS daemon on all nodes. (You can follow the instructions given in the following link:  http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/). To start HDFS, use the following command on the NameNode:
+1) Install Hadoop, prepare Hadoop_data folder on all nodes, and start the HDFS daemon on all nodes. (You can follow the instructions given in the following link:  http://pingax.com/install-apache-hadoop-ubuntu-cluster-setup/).  
+To start HDFS, use the following command on the NameNode:
 ```
 $ start-dfs.sh
 ```
 
 2) Install Apache Spark by choosing a Pre-built for Hadoop (2.6.4
- or later) package,  so that you do not have to build Spark first. Then use the following command on the master node to start both the master and the slave nodes:
+ or later) package,  so that you do not have to build Spark first.  
+ Then use the following command on the master node to start both the master and slave nodes:
 ```
 $ sbin/start-all.sh
 ```
- (you can follow the instructions given on the following link:  http://blog.insightdatalabs.com/spark-cluster-step-by-step/)
+ (To install Spark cluster you can follow the instructions given on the following link:  http://blog.insightdatalabs.com/spark-cluster-step-by-step/)
  
-3) Install Elasticsearch.  (you can follow the instructions given on the following link: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04
-). You can configure Elasticsearch to start automatically with system booting, however, you can also start the service manually by running the following code on each elasticseearch node:
+3) Install Elasticsearch. (you can follow the instructions given on the following link: https://www.digitalocean.com/community/tutorials/how-to-set-up-a-production-elasticsearch-cluster-on-ubuntu-14-04
+).  
+You can configure Elasticsearch to start automatically with system booting. However, you can also start the service manually by running the following code on each elasticseearch node:
 ```
 $ sudo service elasticsearch start
 ```
@@ -25,7 +28,7 @@ $ sudo service elasticsearch start
 ```
 $ sudo service elasticsearch start
 ```
-* To easily explore & visualize Elasticsearch indices, you can install Kibana by following this link:  https://www.elastic.co/guide/en/kibana/current/setup.html
+* To easily explore & visualize Elasticsearch indices, you can install Kibana by following the instructions on this link:  https://www.elastic.co/guide/en/kibana/current/setup.html
 * You can also install Sense console for interacting with the REST API of Elasticsearch. It's a Kibana app and can be installed by running the following command from the Kibana folder:
 ```
 $ ./bin/kibana plugin --install elastic/sense
@@ -34,7 +37,7 @@ $ ./bin/kibana plugin --install elastic/sense
 ```
 $ ./bin/kibana
 ```
-3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) to the jars folder in your Spark home.
+3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) from [here](http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/2.3.2/elasticsearch-hadoop-2.3.2.jar) to the jars folder in your Spark home.
 
 ## Installing
 1) The code is written in Python 3, so you need Python 3.x to be installed. (For both Ubuntu and Debian, Python 3 will be installed by default)
@@ -43,7 +46,7 @@ $ ./bin/kibana
 ```
 $ hdfs dfs -copyFromLocal europeana/*.gz  /spark/europeana/
 ```
-Note: I have downloaded the full Europeana metadata collection as zipped JSON files from the Metadata Quality Assurance Framework website under the following link: http://141.5.103.129/europeana-qa/download.html
+Note: We have downloaded the full Europeana metadata collection as zipped JSON files from the Metadata Quality Assurance Framework website under the following link: http://141.5.103.129/europeana-qa/download.html
 
 4) Edit the configuration file /src/main/conf.py to assign the appropriate parameter values based on your previous installation. For example:
 ```
