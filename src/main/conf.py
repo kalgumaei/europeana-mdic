@@ -4,7 +4,6 @@
 
 ######### General settings
 data_path = "hdfs://es-spark1:9000/spark/europeana/*.gz"
-#data_path = "hdfs://es-spark1:9000/spark/europeana/1_09218_Ag_EU_EUscreen_National_Audiovisual_Archive.json.gz"
 test_data_path = "hdfs://es-spark1:9000/spark/europeana/test/test_json_data.gz"
 default_language = "unknown"
 tfidf_formula = "term_freq * math.log(1 + (all_docs / doc_freq ))"
