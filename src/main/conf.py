@@ -10,7 +10,7 @@ tfidf_formula = "term_freq * math.log(1 + (all_docs / doc_freq ))"
 target_fields = ["dc:title", "dc:description", "dcterms:alternative"]
 
 ######### Elasticsearch settings
-es_hosts = "localhost" #"10.254.1.5,10.254.1.4,10.254.1.2"
+es_hosts = "10.254.1.5,10.254.1.4,10.254.1.2"
 es_port = "9200"
 # Original index
 index_name = 'europeana-5m'
