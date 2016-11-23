@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# europeana\metadataic\ic_scoring.py
+# europeana-mdic/src/main/ic_scoring.py
 
 import sys
 import math
@@ -81,13 +81,14 @@ def calculate_tfidf(termvector, field):
     """Calculate TF-IDF for a given term vector."""
     tfidf = 0.0
     terms = termvector["term_vectors"][field]["terms"]
-    length = len(terms)
+    length = 0
     for token in terms:
         term_freq = terms[token]["term_freq"]
         doc_freq = terms[token]["doc_freq"]
         all_docs = termvector["term_vectors"][
             field]["field_statistics"]["doc_count"]
         tfidf = tfidf + eval(TFIDF_FORMULA)
+        length = length + term_freq
     return tfidf, length
 
 

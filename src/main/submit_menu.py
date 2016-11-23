@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# europeana\metadataic\submit_menu.py
+# europeana-mdic/src/main/submit_menu.py
 
 import sys
 import subprocess
@@ -37,7 +37,7 @@ def submit_job(job_file, job_name, index_name, type_name):
     submit_command ="".join(["bash /usr/local/spark/bin/spark-submit\
                               --master spark://", sp_master, " \
                               --name '", job_name, "' \
-                              --executor-memory 2500m " , job_file])
+                              --executor-memory 2G " , job_file])
     args = shlex.split(submit_command)
     p = subprocess.call(args)
     if not p:

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# europeana\metadataic\data_transform.py
+# europeana-mdic/src/main/data_transform.py
 
 import os
 import sys

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# europeana\metadataic\index_settings.py
+# europeana-mdic/src/main/index_settings.py
 
 import conf
 
@@ -178,7 +178,7 @@ language_dict = {
     'ur': 'urdu',
     'vi': 'vietnamese',
     'yi': 'yiddish',
-    'zh': 'chinese'
+    'zh-cn': 'chinese'
 }
 # 'zxx': menas no linguistic information (added 2006-01-11)
 # 'und': menas undetermined
