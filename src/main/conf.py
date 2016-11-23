@@ -13,12 +13,12 @@ target_fields = ["dc:title", "dc:description", "dcterms:alternative"]
 es_hosts = "10.254.1.5,10.254.1.4,10.254.1.2"
 es_port = "9200"
 # Original index
-index_name = 'europeana-5m'
+index_name = 'europeana-full'
 type_name = 'resources'
 # Result index
-ic_index_name = 'europeana-5m-result'
+ic_index_name = 'europeana-full-result'
 ic_type_name = 'resources'
  
 ######### spark settings
 spark_master = "es-spark2:7077"
-es_shards_to_spark_partitions = 500
+es_shards_to_spark_partitions = 1200
