@@ -38,7 +38,7 @@ $ ./bin/kibana
 3) Download Elasticsearch for Hadoop connector (elasticsearch-hadoop-2.3.2.jar or later) from [here](http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/) to the jars folder in your Spark home.
 
 ## Installation
-1) This framework is written in Python 3, so you need Python 3.x to be installed on each node. (For both Ubuntu and Debian, Python 3 will be installed by default)  
+1) This framework is written in Python 3, so Python 3.x needs to be installed on each node. (For both Ubuntu and Debian, Python 3 will be installed by default)  
 2) Download the application code to your home or src directory on your Spark master node.  
 3) Upload the Europeana metadata files from the 'europeana' local folder to your HDFS by running the following HDFS command on your Hadoop NameNode:
 ```
